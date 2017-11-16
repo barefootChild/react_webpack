@@ -21,7 +21,7 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.js$/, loader: 'babel-loader'},
+            {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
             {
                 test: /\.(woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=50000&name=[path][name].[ext]'
