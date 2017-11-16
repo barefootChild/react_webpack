@@ -13,11 +13,11 @@ var mimeTypes = {
 
 http.createServer(function (request, response) {
   var lookup = path.basename(decodeURI(request.url)) || 'index.html',
-    dirname = path.dirname(decodeURI(request.url)) || '';
+    dirname = path.dirname(decodeURI(request.url)) || '/index';
   if (dirname && dirname.length > 1) {
     var f = dirname + '/' + lookup;
   } else {
-    var f = dirname + lookup;
+    var f = '/index/' + lookup;
   }
   console.log(f);
   //文件是否存在

@@ -7,17 +7,17 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index/index.js'
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['server/index']),
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/index/index.html'
         })
     ],
     output: {
         filename: '[name].bundle.[hash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'server/index')
     },
     module: {
         rules: [

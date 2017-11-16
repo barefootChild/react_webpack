@@ -11,7 +11,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: 'mail',
+            current: 'default',
         }
     }
 
@@ -27,11 +27,11 @@ class App extends Component {
                 onClick={this.handleClick}
                 selectedKeys={[this.state.current]}
                 mode="horizontal">
-                <Menu.Item key="mail">
-                    <Icon type="mail" />Navigation One
+                <Menu.Item key="game">
+                    <a href="../game/index.html"><Icon type="android" />数字游戏</a>
                 </Menu.Item>
                 <Menu.Item key="app">
-                    <Icon type="appstore" />Navigation Two
+                    <a href="#"><Icon type="appstore" />敬请期待</a>
                 </Menu.Item>
             </Menu>
         </div>)

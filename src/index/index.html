@@ -5,16 +5,25 @@
     <title>barefootChild</title>
     <style type="text/css">
         .article-title {
-            margin: 100px auto 10px;
+            margin: 50px auto 10px;
             text-align: center;
             color: #178ce6
+        }
+        #app {
+            width: 80%;
+            margin: 0 auto;
+        }
+        #app ul {
+            display: flex;
+            justify-content: space-around;
+        }
+        #app ul:after {
+            display: none;
         }
     </style>
 </head>
 <body>
 <h3 class="article-title">Welcome to private website of barefootChild!</h3>
-<div>
-    <a href="/game/index.html">数字游戏</a>
-</div>
+<div id="app"></div>
 </body>
 </html>
