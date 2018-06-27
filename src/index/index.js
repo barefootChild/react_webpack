@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import { render } from 'react-dom';
 
 import { Menu, Icon } from 'antd';
+import './index.scss'
 
 class App extends Component {
     constructor(props) {
@@ -19,6 +20,9 @@ class App extends Component {
         this.setState({
             current: e.key,
         });
+        if (process.env.NODE_ENV === 'production') {
+            console.error('I am an error')
+        }
     };
 
     render() {

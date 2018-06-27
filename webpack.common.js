@@ -3,17 +3,19 @@
  */
 
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
     entry: {
+        vendor: ['react', 'react-dom'],
         app: './src/index/index.js'
     },
     plugins: [
-        new CleanWebpackPlugin(['server/index']),
         new HtmlWebpackPlugin({
             template: './src/index/index.html'
-        })
+        }),
+        new ExtractTextPlugin('styles.[hash].css'),
     ],
     output: {
         filename: '[name].bundle.[hash].js',
@@ -21,23 +23,62 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
             {
-                test: /\.(woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+                test: /\.js$/,
+                use: [
+                    'babel-loader'
+                ],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    'file-loader'
+                ]
             },
             {
                 test: /\.scss$/,
-                loader: "style!css!sass?sourceMap"
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
             },
             {   test: /\.css$/,
-                loader: 'style-loader!css-loader?sourceMap'
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader'
+                })
             },
             {
                 // edit this for additional asset file types
-                test: /\.(png|jpg|gif)$/,
-                loader: 'url-loader?limit=819200'
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             },
+            {
+                test: /\.(csv|tsv)$/,
+                use: [
+                    'csv-loader'
+                ]
+            },
+            {
+                test: /\.xml$/,
+                use: [
+                    'xml-loader'
+                ]
+            }
         ]
-    }
+    },
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {
+    //                 test: /react/,
+    //                 name: "vendor",
+    //                 chunks: "all"
+    //             }
+    //         }
+    //     }
+    // }
  };
