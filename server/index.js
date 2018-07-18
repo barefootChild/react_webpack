@@ -3,14 +3,31 @@ const path = require('path')
 const fileServer = require('koa-static')
 const Router = require('koa-router')
 
+const { uploadFile } = require('./src/utils')
+
 const app = new Koa()
 const router = new Router()
+router.post('/imgs/uploads', async (ctx) => {
+  let result = {success: false}
+  let serverFilePath = path.join(__dirname, 'imgs')
+
+  result = await uploadFile(ctx, {
+    fileType: 'album',
+    path: serverFilePath
+  })
+  ctx.body = result
+})
 
 router.get('/', (ctx) => {
   ctx.response.redirect('/index/index.html')
 })
 
 app.use(fileServer(path.join(__dirname, './')))
+
+app.use(async (ctx, next) => {
+  await next()
+  ctx.set({'Access-Control-Allow-Origin': '*'})
+})
 
 app.use(router.routes()).use(router.allowedMethods())
 

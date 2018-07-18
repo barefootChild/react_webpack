@@ -1,3 +1,33 @@
 body {
   background: #ccc
 }
+#my-file {
+  position: absolute;
+  top: -10000px;
+}
+.img-item-container {
+  display: flex;
+}
+.self-file-btn {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ccc;
+  color: white;
+  border: 1px dotted #fff;
+  cursor: pointer;
+}
+.img-item {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
