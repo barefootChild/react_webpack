@@ -32,5 +32,5 @@ app.use(async (ctx, next) => {
 app.use(router.routes()).use(router.allowedMethods())
 
 app.listen(8888, () => {
-  console.log('Your application is running on port 88888')
+  console.log('Your application is running on port 8888')
 })
