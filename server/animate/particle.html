@@ -54,7 +54,7 @@
             w = (pi.max - dist) / pi.max
             ctx.beginPath()
             ctx.lineWidth = w /2
-            ctx.strokeStyle = `rgba(110, 110, 110, ${w + 0.2})`
+            ctx.strokeStyle = `rgba(23, 140, 230, ${w + 0.2})`
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(pi.x, pi.y)
             ctx.stroke()
@@ -88,6 +88,25 @@
     all_points = [...random_points, current_point]
 
     setTimeout(draw, 100)
+
+    function selfHttp (params) {
+      const xhr = new XMLHttpRequest()
+      xhr.open('post', "http://localhost:8888/checkAuthority")
+      xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const result = JSON.parse(xhr.response)
+          if (result.code === 1) {
+            window.location.pathname = 'index/index.html'
+          }
+        }
+      }
+      xhr.send(params)
+    }
+
+    window.onclick = () => {
+      selfHttp("name=zys&password=12345678")
+    }
   </script>
 </body>
 </html>

@@ -19,7 +19,15 @@ router.post('/imgs/uploads', async (ctx) => {
 })
 
 router.get('/', (ctx) => {
-  ctx.response.redirect('/index/index.html')
+  ctx.response.redirect('/animate/particle.html')
+})
+
+router.post('/checkAuthority', (ctx) => {
+  ctx.cookies.set('result', 'success')
+  ctx.body = {
+    code: 1,
+    msg: 'success'
+  }
 })
 
 app.use(fileServer(path.join(__dirname, './')))
