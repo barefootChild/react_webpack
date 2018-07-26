@@ -26,6 +26,7 @@ function uploadFile(ctx, options) {
   let fileType = options.fileType || 'common'
   let filePath = path.join(options.path, fileType)
   let mkdirResult = mkdirsSync(filePath)
+  console.log(mkdirResult)
 
   return new Promise((resolve, reject) => {
     console.log('uploading...')

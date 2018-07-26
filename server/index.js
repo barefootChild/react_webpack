@@ -2,11 +2,22 @@ const Koa = require('koa')
 const path = require('path')
 const fileServer = require('koa-static')
 const Router = require('koa-router')
+const bodyParser = require('koa-bodyparser')
 
 const { uploadFile } = require('./src/utils')
 
 const app = new Koa()
 const router = new Router()
+
+app.use(fileServer(path.join(__dirname, './')))
+
+app.use(bodyParser())
+
+app.use(async (ctx, next) => {
+  await next()
+  ctx.set({'Access-Control-Allow-Origin': '*'})
+})
+
 router.post('/imgs/uploads', async (ctx) => {
   let result = {success: false}
   let serverFilePath = path.join(__dirname, 'imgs')
@@ -23,18 +34,10 @@ router.get('/', (ctx) => {
 })
 
 router.post('/checkAuthority', (ctx) => {
-  ctx.cookies.set('result', 'success')
   ctx.body = {
     code: 1,
     msg: 'success'
   }
-})
-
-app.use(fileServer(path.join(__dirname, './')))
-
-app.use(async (ctx, next) => {
-  await next()
-  ctx.set({'Access-Control-Allow-Origin': '*'})
 })
 
 app.use(router.routes()).use(router.allowedMethods())
