@@ -13,7 +13,8 @@ class App extends Component {
         super(props);
         this.state = {
             current: 'default',
-            uploadFiles: []
+            uploadFiles: [],
+            showText: false
         }
     }
 
@@ -24,6 +25,12 @@ class App extends Component {
         if (process.env.NODE_ENV === 'production') {
             console.error('I am an error')
         }
+    }
+
+    toggleState = () => {
+        this.setState({
+            showText: !this.state.showText
+        })
     }
 
     submitFile = () => {
@@ -101,6 +108,12 @@ class App extends Component {
                 <div className="self-file-btn" onClick={this.selfFileBtnClick}>+</div>
             </div>
             <div><Button onClick={this.submitFile}>确认上传</Button></div>
+            <div className="pomo-container" onClick={this.toggleState}>
+                <div className={this.state.showText ? "pomo-bg-container active" : "pomo-bg-container disappear"}></div>
+                <div className={this.state.showText ? "pomo-text-container display" : "pomo-text-container"}>
+                    <p>I am text content!</p>
+                </div>
+            </div>
         </div>)
     }
 }

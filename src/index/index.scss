@@ -57,3 +57,71 @@ body {
     opacity: .6;
   }
 }
+.pomo-container {
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: url('./logo.svg') no-repeat;
+  background-size: contain;
+  background-position: center center;
+  cursor: pointer;
+  .pomo-bg-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 2000%;
+    background: url('https://kongchenglc.github.io/Demo/Frame%20animation/ink.png') no-repeat;
+    background-size: 100% 100%;
+    visibility: hidden;
+    z-index: 2;
+  }
+  .pomo-text-container {
+    color: #e4dcca;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    visibility: hidden;
+    z-index: 3;
+    overflow-y: auto;
+    transition: opacity .4s, visibility 0s .4s;
+    background: url("https://kongchenglc.github.io/Demo/Frame%20animation/modal-bg.jpg")
+  }
+  .active {
+    visibility: visible;
+    animation: Expand .8s steps(24);
+    animation-fill-mode: forwards;
+  }
+  .disappear {
+    transition: visibility 0s .8s;
+    animation: Narrow .8s steps(24);
+  }
+  .display {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .7s .7s, visibility 0s .7s;
+  }
+}
+@keyframes Expand {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-95%);
+  }
+}
+@keyframes Narrow {
+  0% {
+    transform: translateX(-95%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
