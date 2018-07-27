@@ -63,10 +63,10 @@ body {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   background: url('./logo.svg') no-repeat;
   background-size: contain;
   background-position: center center;
-  cursor: pointer;
   .pomo-bg-container {
     position: absolute;
     top: 0;
