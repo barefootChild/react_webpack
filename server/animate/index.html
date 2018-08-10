@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>finger</title>
+</head>
+<body>
+  <div id='fingerContainer' style="width: 100%; word-break: break-all"></div>
+</body>
+<script>
+  const canvas = document.createElement('canvas')
+  const ctx = canvas.getContext('2d')
+  const container = document.querySelector('#fingerContainer')
+  ctx.font = "5px Arial"
+  ctx.fillText("a", 10, 50)
+  ctx.moveTo(0, 60)
+  ctx.lineTo(200, 60)
+  ctx.stroke()
+  const b64 = canvas.toDataURL().replace("data:image/png;base64,", '')
+  container.innerHTML = b64
+</script>
+</html>
