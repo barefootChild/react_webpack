@@ -60,3 +60,4 @@ dist/
 .idea/
 
 /server/imgs/*
+*DS_Store
