@@ -9,7 +9,7 @@ const webpack = require('webpack');
 module.exports = merge(common, {
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './server/index',
+        historyApiFallback: true,
         port: 8089,
         hot: true
     },

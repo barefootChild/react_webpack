@@ -56,6 +56,8 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "react-router-dom": "^4.3.1",
+    "typed.js": "^2.0.9"
   }
 }

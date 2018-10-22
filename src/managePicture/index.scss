@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main {
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-image: url('./imgs/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.typed-container {
+  display: inline-block;
+}
