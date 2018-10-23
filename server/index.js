@@ -1,3 +1,4 @@
+const fs = require('fs')
 const Koa = require('koa')
 const path = require('path')
 const fileServer = require('koa-static')
@@ -31,6 +32,12 @@ router.post('/imgs/uploads', async (ctx) => {
 
 router.get('/', (ctx) => {
   ctx.response.redirect('/animate/particle.html')
+})
+
+router.get('/manage/*', ctx => {
+  let html = fs.readFileSync(path.resolve('./manage/index.html'))
+  ctx.type = 'html'
+  ctx.body = html
 })
 
 router.post('/checkAuthority', (ctx) => {
