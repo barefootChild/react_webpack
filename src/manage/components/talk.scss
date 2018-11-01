@@ -1,0 +1,28 @@
+.talk {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  .talk-btn-container {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .ant-form-item-required:before {
+    vertical-align: middle;
+  }
+  .ant-input-lg {
+    height: 40px;
+  }
+  .ant-form-item-label {
+    height: 40px;
+    line-height: 40px;
+  }
+  label {
+    font-size: 16px;
+  }
+  .ant-input {
+    font-size: 18px;
+  }
+}

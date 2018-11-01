@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Typed from 'typed.js'
 
 import { Button, Icon } from 'antd'
+import './app.scss'
 
 import appActions from '../actions/app'
 

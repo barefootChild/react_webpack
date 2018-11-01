@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -7,8 +7,6 @@ import rootReducer from './reducers'
 
 import App from './components/App'
 import Talk from './components/Talk'
-
-import './index.scss'
 
 const store = createStore(rootReducer)
 
