@@ -7,7 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const common = require('./webpack.common.js');
 module.exports = merge(common, {
     plugins: [
-        new CleanWebpackPlugin(['server/index']),
+        new CleanWebpackPlugin(['server/manage']),
     ],
     mode: "production"
 });

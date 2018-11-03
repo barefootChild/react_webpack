@@ -8,18 +8,18 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        vendor: ['react', 'react-dom'],
-        app: './src/index/index.js'
+        vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux'],
+        app: './src/manage/index.js'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index/index.html'
+            template: './src/manage/index.html'
         }),
         new ExtractTextPlugin('styles.[hash].css'),
     ],
     output: {
         filename: '[name].bundle.[hash].js',
-        path: path.resolve(__dirname, 'server/index')
+        path: path.resolve(__dirname, 'server/manage')
     },
     module: {
         rules: [

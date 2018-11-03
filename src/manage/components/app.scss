@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Condiment);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main {
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-image: url('../imgs/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.typed-container {
+  width: 50vw;
+  height: 80px;
+  font-size: 48px;
+  font-family: 'Condiment', cursive;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+.typed-container1, .typed-container2 {
+  display: inline;
+}
+.btn-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 2s;
+}
+.btn-container-show {
+  opacity: 1;
+  bottom: 30%;
+}
+.btn-text {
+  font-size: 24px;
+}
+.ant-btn-lg {
+  display: flex;
+  height: auto;
+  padding: 5px 15px;
+  align-items: center;
+}
