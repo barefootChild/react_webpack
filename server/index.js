@@ -23,7 +23,12 @@ memoryDb.once('open', () => {
 })
 
 const memorySchema = new mongoose.Schema({
-  name: String
+  storyPeople: String,
+  storyAddress: String,
+  storyDate: String,
+  storyPicture: [String],
+  storyBrief: String,
+  storyDetails: String
 })
 
 const memory = mongoose.model('memory', memorySchema)
@@ -34,7 +39,11 @@ app.use(bodyParser())
 
 app.use(async (ctx, next) => {
   await next()
-  ctx.set({'Access-Control-Allow-Origin': '*'})
+  ctx.set({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Requested-With',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  })
 })
 
 router.post('/imgs/uploads', async (ctx) => {
@@ -49,8 +58,8 @@ router.post('/imgs/uploads', async (ctx) => {
 })
 
 router.post('/story/info', async ctx => {
-  const { name } = ctx.request.body
-  const memoryItem = new memory({ name })
+  const { storyPeople, storyAddress, storyDate, storyPicture, storyBrief, storyDetails } = ctx.request.body
+  const memoryItem = new memory({ storyPeople, storyAddress, storyDate, storyPicture, storyBrief, storyDetails })
   const result = { code: 0, message: 'failed'}
   await new Promise((resolve, reject) => {
     memoryItem.save((err, item) => {

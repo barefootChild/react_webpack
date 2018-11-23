@@ -50,6 +50,7 @@
   "homepage": "https://github.com/barefootChild/react_webpack#readme",
   "dependencies": {
     "antd": "^2.13.10",
+    "axios": "^0.18.0",
     "busboy": "^0.2.14",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",

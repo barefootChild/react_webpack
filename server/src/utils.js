@@ -1,6 +1,5 @@
 const inspect = require('util').inspect
 const path = require('path')
-const os = require('os')
 const fs = require('fs')
 const Busboy = require('busboy')
 
@@ -25,14 +24,12 @@ function uploadFile(ctx, options) {
   let busboy = new Busboy({headers: req.headers})
   let fileType = options.fileType || 'common'
   let filePath = path.join(options.path, fileType)
-  let mkdirResult = mkdirsSync(filePath)
-  console.log(mkdirResult)
+  mkdirsSync(filePath) //创建文件存储目录
 
   return new Promise((resolve, reject) => {
-    console.log('uploading...')
     let result = {
       success: false,
-      formData: {}
+      imgurl: ''
     }
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
@@ -44,20 +41,15 @@ function uploadFile(ctx, options) {
 
       file.on('end', () => {
         result.success = true
+        result.imgurl = 'http://10.232.46.156:8888/imgs/' + fileType + '/' + fileName
 
         console.log('upload success!')
         resolve(result)
       })
     })
 
-    busboy.on('field', (fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) => {
-      console.log('表单数据[' + fieldname + ']:value:' + inspect(val))
-      result.formData[fieldname] = inspect(val)
-    })
-
     busboy.on('finish', () => {
       console.log('ending')
-      resolve(result)
     })
 
     busboy.on('error', () => {
